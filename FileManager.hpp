@@ -1,3 +1,3 @@
 #include <iostream>
 
-String listFiles(std::string directory);
+std::string listFiles(std::string directory);
