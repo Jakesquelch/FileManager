@@ -8,8 +8,11 @@ int main()
         std::cin >> choice;
 
         switch (choice) {
-            case 1: //list files
+        case 1: {//list files
+            std::string output = listFiles(".");
+            std::cout << output;
             break;
+        }
             case 2: //create files
             break;
             case 3:
