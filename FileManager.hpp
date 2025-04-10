@@ -1,3 +1,3 @@
 #include <iostream>
 
-std::string listFiles(std::string directory);
+std::string listFiles(const std::string& directory);
