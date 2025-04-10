@@ -10,7 +10,8 @@ int main()
         switch (choice) {
         case 1: {//list files
             std::string output = listFiles(".");
-            std::cout << output;
+            std::cout << "\n(1) Here are the listed files:\n";
+            std::cout << output <<"\n";
             break;
         }
             case 2: //create files
