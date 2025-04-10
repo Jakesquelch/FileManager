@@ -14,8 +14,19 @@ int main()
             std::cout << output <<"\n";
             break;
         }
-            case 2: //create files
+        case 2: {//create files
+            std::string filename;
+            std::cout << "\n(2) Enter filename here: ";
+            std::cin >> filename;
+
+            if (createFile(filename)) {
+                std::cout << "File created successfully: " << filename << "\n\n";
+            }
+            else {
+                std::cout << "Error occured creating file\n\n";
+            }
             break;
+        }
             case 3:
             std::cout << "Goodbye mate!\n";
             break;

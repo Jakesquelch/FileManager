@@ -1,5 +1,6 @@
 #include <iostream>
 #include <filesystem> //allows working with files and directories
+#include <fstream> //so we can use std::ofstream
 #include "FileManager.hpp"
 
 namespace fs = std::filesystem; //so can write fs instead of std::filesystem 
@@ -19,4 +20,15 @@ std::string listFiles(const std::string& directory)
 	}
 
 	return oss.str();
+}
+
+bool createFile(const std::string& path) 
+{
+	std::ofstream file(path);
+	if (file) {
+		//file created successfully
+		file.close();
+		return true;
+	}
+	return false;
 }
