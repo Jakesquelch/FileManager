@@ -43,3 +43,15 @@ bool deleteFile(const std::string& file)
 		return false;
 	}
 }
+
+bool renameFile(const std::string& oldName, const std::string& newName) 
+{
+	try {
+		fs::rename(oldName, newName);
+		return true;
+	}
+	catch (const fs::filesystem_error& e) {
+		std::cerr << "Error renaming file: " << e.what() << "\n";
+		return false;
+	}
+}

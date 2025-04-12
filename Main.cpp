@@ -4,7 +4,7 @@ int main()
 {
     int choice;
     do {
-        std::cout << "1. List files\n2. Create file\n3. Delete a file\n4. Exit\nChoice: ";
+        std::cout << "1. List files\n2. Create file\n3. Delete a file\n4. Rename a file\n5. Exit\nChoice: ";
         std::cin >> choice;
 
         switch (choice) {
@@ -40,13 +40,28 @@ int main()
             }
             break;
         }
-            case 4:
+        case 4: { //rename a file
+            std::string oldName;
+            std::string newName;
+            std::cout << "\n(4)Enter old filename here: ";
+            std::cin >> oldName;
+            std::cout << "Enter new fileName here: ";
+            std::cin >> newName;
+            if (renameFile(oldName, newName)) {
+                std::cout << "\nFile renamed successfully!\n\n";
+            }
+            else {
+                std::cout << "Error occured renaming file\n\n";
+            }
+            break;
+        }
+            case 5:
             std::cout << "Goodbye mate!\n";
             break;
             default:
             std::cout << "Invalid choice\n";
         }
-    } while (choice != 4);
+    } while (choice != 5);
 
     return 0;
 }
