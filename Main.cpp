@@ -28,7 +28,16 @@ int main()
             break;
         }
         case 3: {//delete a file
-            std::cout << "\n(3) Successfully deleted a file\n\n";
+            std::string filename;
+            std::cout << "\n(3) Enter filename here: ";
+            std::cin >> filename;
+
+            if (deleteFile(filename)) {
+                std::cout << "File deleted successfully!\n\n";
+            }
+            else {
+                std::cout << "Error occured deleting file\n\n";
+            }
             break;
         }
             case 4:

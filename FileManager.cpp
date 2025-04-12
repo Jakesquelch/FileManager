@@ -32,3 +32,14 @@ bool createFile(const std::string& path)
 	}
 	return false;
 }
+
+bool deleteFile(const std::string& file)
+{
+	try {
+		return fs::remove(file); //return true if file deleted 
+	}
+	catch (const fs::filesystem_error& e) {
+		std::cerr << "Error deleting file: " << e.what() << "\n";
+		return false;
+	}
+}
