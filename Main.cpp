@@ -28,7 +28,7 @@ int main()
 				std::cout << "File created successfully!\n\n";
 			}
 			else {
-				std::cout << "Error occured creating file\n\n";
+				std::cout << "Error occurred creating file\n\n";
 			}
 			break;
 		}
@@ -41,7 +41,7 @@ int main()
 				std::cout << "File deleted successfully!\n\n";
 			}
 			else {
-				std::cout << "Error occured deleting file\n\n";
+				std::cout << "Error occurred deleting file\n\n";
 			}
 			break;
 		}
@@ -59,7 +59,7 @@ int main()
 				switch (subChoice) {
 				case 1: { //sub-rename a file
 					std::string oldName, newName;
-					std::cout << "\n(4)Enter old filename here: ";
+					std::cout << "\n(1) Enter old filename here: ";
 					std::cin >> oldName;
 					std::cout << "Enter new fileName here: ";
 					std::cin >> newName;
@@ -68,13 +68,13 @@ int main()
 						std::cout << "\nFile renamed successfully!\n\n";
 					}
 					else {
-						std::cout << "Error occured renaming file\n\n";
+						std::cout << "Error occurred renaming file\n\n";
 					}
 					break;
 				}
 				case 2: { //sub-move
 					std::string source, destination;
-					std::cout << "Enter source file path: ";
+					std::cout << "(2) Enter source file path: ";
 					std::cin >> source;
 					std::cout << "Enter destination file path: ";
 					std::cin >> destination;
@@ -88,26 +88,23 @@ int main()
 					break;
 				}
 				case 3: { //sub-return to main menu
-					std::cout << "Returning to main menu...\n";
+					std::cout << "Returning to main menu...\n\n";
 					break;
+				}
 				default:
 					std::cout << "Invalid choice in Additional Options menu\n";
+					break;
 				}
-
-				}
-
 			} while (subChoice != 3);
 			break;
-		case 5: { //exit programme
+		}
+		case 5:  //exit programme
 			std::cout << "Goodbye mate!\n";
 			break;
 		default:
-			std::cout << "Invalid choice in Main Menu\n";
+			std::cout << "\nInvalid choice in Main Menu, try again!\n\n";
 		}
+	} while (choice != 5);
 
-		} 
-		}
-		
-	}while (choice != 5);
 	return 0;
 }
