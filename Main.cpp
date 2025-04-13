@@ -60,7 +60,8 @@ int main()
 				if (std::cin.fail()) {
 					std::cin.clear(); // clear the error flags
 					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
-					std::cout << "Invalid input. Please enter a number.\n";
+					std::cout << "Invalid input! Please enter a number.\n";
+					std::cin.get(); //wait for user to press enter before repeating the loop (so they can now see the error message)
 					continue; // Go back to the top of the submenu loop
 				}
 
