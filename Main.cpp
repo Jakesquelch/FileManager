@@ -12,6 +12,19 @@ int main()
 		std::cout << "Choice: ";
 		std::cin >> choice;
 
+		//below sorts errors where the user inputs letters instead of numbers as their choice
+		if (std::cin.fail()) {
+			std::cin.clear(); // clear the error flags
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
+			std::cout << "Invalid input, please enter a number next time.\n";
+			std::cout << "Press Enter to continue...";
+			std::cin.get(); 
+			//the above is added in a few times, this is because the app has to be paused in certain places
+			//it waits for an enter press before continuing, so the user can see error messages
+			//this is becase of system("cls"); (which resets the page before you can see the error message)
+			continue; // Go back to the top of the submenu loop
+		}
+
 		switch (choice) {
 		case 1: {//list files
 			std::string output = listFiles(".");
@@ -41,7 +54,7 @@ int main()
 				std::cout << "File deleted successfully!\n\n";
 			}
 			else {
-				std::cout << "Error occurred deleting file\n\n";
+				std::cout << "Error occurred deleting file, please make sure the file is present!\n\n";
 			}
 			break;
 		}
@@ -60,8 +73,9 @@ int main()
 				if (std::cin.fail()) {
 					std::cin.clear(); // clear the error flags
 					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
-					std::cout << "Invalid input! Please enter a number.\n";
-					std::cin.get(); //wait for user to press enter before repeating the loop (so they can now see the error message)
+					std::cout << "Invalid input, please enter a number next time.\n";
+					std::cout << "Press Enter to continue...";
+					std::cin.get(); 
 					continue; // Go back to the top of the submenu loop
 				}
 
@@ -78,6 +92,9 @@ int main()
 					}
 					else {
 						std::cout << "Error occurred renaming file\n\n";
+						std::cout << "Press Enter to continue...";
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+						std::cin.get(); 
 					}
 					break;
 				}
