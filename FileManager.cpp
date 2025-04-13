@@ -1,4 +1,3 @@
-#include <iostream>
 #include <filesystem> //allows working with files and directories
 #include <fstream> //so we can use std::ofstream
 #include "FileManager.hpp"

@@ -56,6 +56,14 @@ int main()
 				std::cout << "Choice: ";
 				std::cin >> subChoice;
 
+				//below sorts errors where the user inputs letters instead of numbers as their choice
+				if (std::cin.fail()) {
+					std::cin.clear(); // clear the error flags
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
+					std::cout << "Invalid input. Please enter a number.\n";
+					continue; // Go back to the top of the submenu loop
+				}
+
 				switch (subChoice) {
 				case 1: { //sub-rename a file
 					std::string oldName, newName;
