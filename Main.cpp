@@ -56,14 +56,16 @@ int main()
 			std::cin >> filename;
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear leftover input otherwise messes up my pauseforuser
 
-			if (createFile(filename))
-			{
-				std::cout << "File '" << filename << "' created successfully!\n\n";
-			}
-			else
-			{
-				std::cout << "Error occurred creating file\n\n";
-			}
+			createFile(filename);
+
+			// if (createFile(filename))
+			// {
+			// 	std::cout << "File '" << filename << "' created successfully!\n\n";
+			// }
+			// else
+			// {
+			// 	std::cout << "Error occurred creating file\n\n";
+			// }
 			pauseForUser();
 			break;
 		}
@@ -75,15 +77,6 @@ int main()
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear leftover input otherwise messes up my pauseforuser
 
 			deleteFile(filename);
-
-			// if (deleteFile(filename))
-			// {
-			// 	std::cout << "File '" << filename << "' deleted successfully!\n\n";
-			// }
-			// else
-			// {
-			// 	std::cout << "Error occurred deleting file, please make sure the file is present!\n\n";
-			// }
 			pauseForUser();
 			break;
 		}
@@ -165,7 +158,7 @@ int main()
 			break;
 		}
 		case 5: // exit programme
-			std::cout << "Goodbye mate!\n";
+			std::cout << "\nGoodbye!\nExiting...";
 			break;
 		default:
 			std::cout << "\nInvalid choice in Main Menu, try again!\n\n";

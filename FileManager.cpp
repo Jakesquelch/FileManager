@@ -32,8 +32,10 @@ bool createFile(const std::string &path)
 	{
 		// file created successfully
 		file.close();
+		std::cout << "\nFile '" << path << "' created successfully\n";
 		return true;
 	}
+	std::cout << "\nError creating file '" << path << "'\n";
 	return false;
 }
 
