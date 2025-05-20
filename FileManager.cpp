@@ -70,6 +70,7 @@ bool renameFile(const std::string &oldName, const std::string &newName)
 	try
 	{
 		fs::rename(oldName, newName);
+		std::cout << "\nFile '" << oldName << "' successfully renamed to '" << newName << "'\n";
 		return true;
 	}
 	catch (const fs::filesystem_error &e)
@@ -84,6 +85,7 @@ bool moveFile(const std::string &source, const std::string &destination)
 	try
 	{
 		fs::rename(source, destination); // this also works for moving (as well as renaming)
+		std::cout << "File successfully moved\n";
 		return true;
 	}
 	catch (const fs::filesystem_error &e)

@@ -128,18 +128,10 @@ int main()
 					std::cin >> oldName;
 					std::cout << "Enter new file name here: ";
 					std::cin >> newName;
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-					if (renameFile(oldName, newName))
-					{
-						std::cout << "\nFile renamed successfully!\n\n";
-					}
-					else
-					{
-						std::cout << "Error occurred renaming file\n\n";
-						std::cout << "Press Enter to continue...";
-						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-						std::cin.get();
-					}
+					renameFile(oldName, newName);
+					pauseForUser();
 					break;
 				}
 				case 2:
@@ -150,14 +142,8 @@ int main()
 					std::cout << "Enter destination file path: ";
 					std::cin >> destination;
 
-					if (moveFile(source, destination))
-					{
-						std::cout << "File moved successfully!\n";
-					}
-					else
-					{
-						std::cout << "Failed to move file\n";
-					}
+					moveFile(source, destination);
+					pauseForUser();
 					break;
 				}
 				case 3:
