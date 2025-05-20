@@ -27,6 +27,12 @@ std::string listFiles(const std::string &directory)
 
 bool createFile(const std::string &path)
 {
+	// Check for spaces in the filename
+	if (path.find(' ') != std::string::npos)
+	{
+		std::cout << "\nError: Filenames cannot contain spaces.\n";
+		return false;
+	}
 	std::ofstream file(path);
 	if (file)
 	{

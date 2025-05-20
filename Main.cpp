@@ -1,4 +1,5 @@
 #include "FileManager.hpp"
+#include <string>
 
 void displayMenu()
 {
@@ -69,8 +70,8 @@ int main()
 		{ // create files
 			std::string filename;
 			std::cout << "\n(2) Enter filename here: ";
-			std::cin >> filename;
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear leftover input otherwise messes up my pauseforuser
+			std::getline(std::cin, filename);
+			// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear leftover input otherwise messes up my pauseforuser
 
 			createFile(filename);
 			pauseForUser();
@@ -80,8 +81,8 @@ int main()
 		{ // delete a file
 			std::string filename;
 			std::cout << "\n(3) Enter filename here: ";
-			std::cin >> filename;
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear leftover input otherwise messes up my pauseforuser
+			std::getline(std::cin, filename);
+			// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear leftover input otherwise messes up my pauseforuser
 
 			deleteFile(filename);
 			pauseForUser();
