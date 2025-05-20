@@ -1,17 +1,33 @@
 #include "FileManager.hpp"
 
+void displayMenu()
+{
+	std::cout << "\nWelcome to FileManager!\n\n";
+	std::cout << "1. List files\n";
+	std::cout << "2. Create file\n";
+	std::cout << "3. Delete a file\n";
+	std::cout << "4. Advanced options\n";
+	std::cout << "5. Exit\n";
+	std::cout << "\nEnter your choice: ";
+}
+
+void pauseForUser()
+{
+	std::cout << "Press enter to continue...";
+	std::cin.get(); // waits for user to press enter
+					// the above is added in a few times, this is because the app has to be paused in certain places
+					// it waits for an enter press before continuing, so the user can see error messages
+					// this is becase of system("cls"); (which resets the page before you can see the error message)
+}
+
 int main()
 {
 	int choice;
 	do
 	{
-		std::cout << "1. List files\n";
-		std::cout << "2. Create file\n";
-		std::cout << "3. Delete a file\n";
-		std::cout << "4. Advanced options\n";
-		std::cout << "5. Exit\n";
-		std::cout << "Choice: ";
+		displayMenu();
 		std::cin >> choice;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // this clears the input buffer of \n
 
 		// below sorts errors where the user inputs letters instead of numbers as their choice
 		if (std::cin.fail())
@@ -19,11 +35,7 @@ int main()
 			std::cin.clear();													// clear the error flags
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
 			std::cout << "Invalid input, please enter a number next time.\n";
-			std::cout << "Press Enter to continue...";
-			std::cin.get();
-			// the above is added in a few times, this is because the app has to be paused in certain places
-			// it waits for an enter press before continuing, so the user can see error messages
-			// this is becase of system("cls"); (which resets the page before you can see the error message)
+			pauseForUser();
 			continue; // Go back to the top of the submenu loop
 		}
 
@@ -34,6 +46,7 @@ int main()
 			std::string output = listFiles(".");
 			std::cout << "\n(1) Here are the listed files:\n";
 			std::cout << output << "\n";
+			pauseForUser();
 			break;
 		}
 		case 2:
@@ -41,10 +54,12 @@ int main()
 			std::string filename;
 			std::cout << "\n(2) Enter filename here: ";
 			std::cin >> filename;
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear leftover input otherwise messes up my pauseforuser
 
 			if (createFile(filename))
 			{
 				std::cout << "File created successfully!\n\n";
+				pauseForUser();
 			}
 			else
 			{
@@ -66,6 +81,7 @@ int main()
 			{
 				std::cout << "Error occurred deleting file, please make sure the file is present!\n\n";
 			}
+			pauseForUser();
 			break;
 		}
 		case 4:
@@ -88,7 +104,7 @@ int main()
 					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
 					std::cout << "Invalid input, please enter a number next time.\n";
 					std::cout << "Press Enter to continue...";
-					std::cin.get();
+					pauseForUser();
 					continue; // Go back to the top of the submenu loop
 				}
 
