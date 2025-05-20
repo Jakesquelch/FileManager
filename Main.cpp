@@ -2,6 +2,7 @@
 
 void displayMenu()
 {
+	system("cls");
 	std::cout << "\nWelcome to FileManager!\n\n";
 	std::cout << "1. List files\n";
 	std::cout << "2. Create file\n";
@@ -9,6 +10,16 @@ void displayMenu()
 	std::cout << "4. Advanced options\n";
 	std::cout << "5. Exit\n";
 	std::cout << "\nEnter your choice: ";
+}
+
+void additionalMenu()
+{
+	system("cls"); // clears the console window, adds a refresh affect kinda
+	std::cout << "\n -- Advanced Options Menu --\n";
+	std::cout << "1. Rename file\n";
+	std::cout << "2. Move file\n";
+	std::cout << "3. Back to main menu\n\n";
+	std::cout << "Enter your choice: ";
 }
 
 void pauseForUser()
@@ -57,15 +68,6 @@ int main()
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear leftover input otherwise messes up my pauseforuser
 
 			createFile(filename);
-
-			// if (createFile(filename))
-			// {
-			// 	std::cout << "File '" << filename << "' created successfully!\n\n";
-			// }
-			// else
-			// {
-			// 	std::cout << "Error occurred creating file\n\n";
-			// }
 			pauseForUser();
 			break;
 		}
@@ -85,14 +87,8 @@ int main()
 			int subChoice;
 			do
 			{
-				system("cls"); // clears the console window, adds a refresh affect kinda
-				std::cout << "\n -- Advanced Options Menu --\n";
-				std::cout << "1. Rename file\n";
-				std::cout << "2. Move file\n";
-				std::cout << "3. Back to main menu\n\n";
-				std::cout << "Enter your choice: ";
+				additionalMenu();
 				std::cin >> subChoice;
-
 				// below sorts errors where the user inputs letters instead of numbers as their choice
 				if (std::cin.fail())
 				{
