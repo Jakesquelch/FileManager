@@ -41,7 +41,13 @@ bool deleteFile(const std::string &file)
 {
 	try
 	{
+		if (!fs::exists(file))
+		{
+			std::cerr << "\nError: File '" << file << "' does not exist\n";
+			return false;
+		}
 		fs::remove(file); // return true if file deleted
+		std::cout << "\nFile '" << file << "' deleted successfully\n";
 		return true;
 	}
 	catch (const fs::filesystem_error &e)

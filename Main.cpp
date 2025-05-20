@@ -74,14 +74,16 @@ int main()
 			std::cin >> filename;
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear leftover input otherwise messes up my pauseforuser
 
-			if (deleteFile(filename))
-			{
-				std::cout << "File '" << filename << "' deleted successfully!\n\n";
-			}
-			else
-			{
-				std::cout << "Error occurred deleting file, please make sure the file is present!\n\n";
-			}
+			deleteFile(filename);
+
+			// if (deleteFile(filename))
+			// {
+			// 	std::cout << "File '" << filename << "' deleted successfully!\n\n";
+			// }
+			// else
+			// {
+			// 	std::cout << "Error occurred deleting file, please make sure the file is present!\n\n";
+			// }
 			pauseForUser();
 			break;
 		}
