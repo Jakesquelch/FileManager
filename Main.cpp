@@ -58,13 +58,13 @@ int main()
 
 			if (createFile(filename))
 			{
-				std::cout << "File created successfully!\n\n";
-				pauseForUser();
+				std::cout << "File '" << filename << "' created successfully!\n\n";
 			}
 			else
 			{
 				std::cout << "Error occurred creating file\n\n";
 			}
+			pauseForUser();
 			break;
 		}
 		case 3:
@@ -72,10 +72,11 @@ int main()
 			std::string filename;
 			std::cout << "\n(3) Enter filename here: ";
 			std::cin >> filename;
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear leftover input otherwise messes up my pauseforuser
 
 			if (deleteFile(filename))
 			{
-				std::cout << "File deleted successfully!\n\n";
+				std::cout << "File '" << filename << "' deleted successfully!\n\n";
 			}
 			else
 			{
@@ -94,7 +95,7 @@ int main()
 				std::cout << "1. Rename file\n";
 				std::cout << "2. Move file\n";
 				std::cout << "3. Back to main menu\n\n";
-				std::cout << "Choice: ";
+				std::cout << "Enter your choice: ";
 				std::cin >> subChoice;
 
 				// below sorts errors where the user inputs letters instead of numbers as their choice
@@ -113,9 +114,9 @@ int main()
 				case 1:
 				{ // sub-rename a file
 					std::string oldName, newName;
-					std::cout << "\n(1) Enter old filename here: ";
+					std::cout << "\n(1) Enter old file name here: ";
 					std::cin >> oldName;
-					std::cout << "Enter new fileName here: ";
+					std::cout << "Enter new file name here: ";
 					std::cin >> newName;
 
 					if (renameFile(oldName, newName))
@@ -151,7 +152,7 @@ int main()
 				}
 				case 3:
 				{ // sub-return to main menu
-					std::cout << "Returning to main menu...\n\n";
+					std::cout << "Returning to main menu...\n";
 					break;
 				}
 				default:
