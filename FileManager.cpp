@@ -84,13 +84,20 @@ bool moveFile(const std::string &source, const std::string &destination)
 {
 	try
 	{
-		fs::rename(source, destination); // this also works for moving (as well as renaming)
-		std::cout << "File successfully moved\n";
+		// Ensure destination directory exists, makes if doesnt exist
+		fs::path destPath(destination);
+		if (destPath.has_parent_path())
+		{
+			fs::create_directories(destPath.parent_path());
+		}
+
+		fs::rename(source, destination);
+		std::cout << "\nFile successfully moved\n";
 		return true;
 	}
 	catch (const fs::filesystem_error &e)
 	{
-		std::cerr << "Error moving file: " << e.what() << "\n";
+		std::cerr << "\nError moving file: " << e.what() << "\n";
 		return false;
 	}
 }

@@ -137,10 +137,11 @@ int main()
 				case 2:
 				{ // sub-move
 					std::string source, destination;
-					std::cout << "(2) Enter source file path: ";
+					std::cout << "(2) Enter source file path (TIP: write filename in this folder): ";
 					std::cin >> source;
-					std::cout << "Enter destination file path: ";
+					std::cout << "Enter destination file path (TIP: write /examplefolder/filename): ";
 					std::cin >> destination;
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 					moveFile(source, destination);
 					pauseForUser();
