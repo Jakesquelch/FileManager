@@ -56,6 +56,14 @@ int main()
 			continue; // Go back to the top of the submenu loop
 		}
 
+		// Check if choice is in the valid range
+		if (choice < 1 || choice > 5)
+		{
+			std::cout << "\nInvalid choice in Main Menu, please enter a number between 1 and 5!\n\n";
+			pauseForUser();
+			continue;
+		}
+
 		switch (choice)
 		{
 		case 1:
@@ -95,11 +103,20 @@ int main()
 			{
 				additionalMenu();
 				std::cin >> subChoice;
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // this clears the input buffer of \n
+
 				// below sorts errors where the user inputs letters instead of numbers as their choice
 				if (std::cin.fail())
 				{
 					wrongUserInput();
 					continue; // Go back to the top of the submenu loop
+				}
+
+				if (subChoice < 1 || subChoice > 3)
+				{
+					std::cout << "\nInvalid choice in Additional Options Menu, please enter a number between 1 and 3!\n\n";
+					pauseForUser();
+					continue;
 				}
 
 				switch (subChoice)
