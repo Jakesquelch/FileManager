@@ -31,6 +31,14 @@ void pauseForUser()
 					// this is becase of system("cls"); (which resets the page before you can see the error message)
 }
 
+void wrongUserInput()
+{
+	std::cin.clear();													// clear the error flags
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
+	std::cout << "Invalid input, please enter a number next time!\n\n";
+	pauseForUser();
+}
+
 int main()
 {
 	int choice;
@@ -43,10 +51,7 @@ int main()
 		// below sorts errors where the user inputs letters instead of numbers as their choice
 		if (std::cin.fail())
 		{
-			std::cin.clear();													// clear the error flags
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
-			std::cout << "Invalid input, please enter a number next time.\n";
-			pauseForUser();
+			wrongUserInput();
 			continue; // Go back to the top of the submenu loop
 		}
 
@@ -92,11 +97,7 @@ int main()
 				// below sorts errors where the user inputs letters instead of numbers as their choice
 				if (std::cin.fail())
 				{
-					std::cin.clear();													// clear the error flags
-					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input
-					std::cout << "Invalid input, please enter a number next time.\n";
-					std::cout << "Press Enter to continue...";
-					pauseForUser();
+					wrongUserInput();
 					continue; // Go back to the top of the submenu loop
 				}
 
